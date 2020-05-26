@@ -1,6 +1,7 @@
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
 #include "vec2.hpp"
+#include "mat2.hpp"
 
 TEST_CASE("Aufgabe 2.2", "[vec2]")
 {
@@ -116,6 +117,25 @@ TEST_CASE("Aufgabe 2.4", "[vec2]")
     REQUIRE(test2.x == Approx(0.0f));
     REQUIRE(test2.y == Approx(0.0f));
 
+}
+TEST_CASE("Aufgabe 2.5", "[mat2]")
+{
+    Mat2 a{ 42.0f,-7.5f,0.0f,11.11f };
+    Mat2 b{ 1.0f,2.0f,3.0f,4.0f };
+    
+    Mat2 bk{ b };
+    bk *= b;
+    REQUIRE(bk.e_00 == Approx(7.0f));
+    REQUIRE(bk.e_10 == Approx(10.0f));
+    REQUIRE(bk.e_01 == Approx(15.0f));
+    REQUIRE(bk.e_11 == Approx(22.0f));
+    bk = b;
+
+    Mat2 test2 = a * b;
+    REQUIRE(test2.e_00 == Approx(19.5f));
+    REQUIRE(test2.e_10 == Approx(54.0f));
+    REQUIRE(test2.e_01 == Approx(33.33f));
+    REQUIRE(test2.e_11 == Approx(44.44f));
 }
 
 int main(int argc, char *argv[])
