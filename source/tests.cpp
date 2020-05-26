@@ -118,6 +118,7 @@ TEST_CASE("Aufgabe 2.4", "[vec2]")
     REQUIRE(test2.y == Approx(0.0f));
 
 }
+
 TEST_CASE("Aufgabe 2.5", "[mat2]")
 {
     Mat2 a{ 42.0f,-7.5f,0.0f,11.11f };
@@ -136,6 +137,52 @@ TEST_CASE("Aufgabe 2.5", "[mat2]")
     REQUIRE(test2.e_10 == Approx(54.0f));
     REQUIRE(test2.e_01 == Approx(33.33f));
     REQUIRE(test2.e_11 == Approx(44.44f));
+}
+
+TEST_CASE("Aufgabe 2.6", "[mat2]")
+{
+    Vec2 v{ 4.2f,-0.5f };
+    Mat2 a{ 42.0f,-7.5f,0.0f,11.11f };
+    Mat2 b{ 1.0f,2.0f,3.0f,4.0f };
+    float phi = 45;
+
+    float test1 = a.det();
+    REQUIRE(test1 == Approx(466.62f));
+    
+    Vec2 test2 = b * v;
+    Vec2 test3 = a * v;
+    REQUIRE(test2.x == Approx(16.8f));
+    REQUIRE(test2.y == Approx(-3.0f));
+    REQUIRE(test3.x == Approx(176.4f));
+    REQUIRE(test3.y == Approx(-1.805f));
+
+    Mat2 test4 = inverse(a);
+    Mat2 test5 = inverse(b);
+    REQUIRE(test4.e_00 == Approx(0.02381f));
+    REQUIRE(test4.e_10 == Approx(0.01607f));
+    REQUIRE(test4.e_01 == Approx(0.0f));
+    REQUIRE(test4.e_11 == Approx(0.09001f));
+    REQUIRE(test5.e_00 == Approx(-2.0f));
+    REQUIRE(test5.e_10 == Approx(1.0f));
+    REQUIRE(test5.e_01 == Approx(1.5f));
+    REQUIRE(test5.e_11 == Approx(-0.5f));
+
+    Mat2 test6 = transpose(a);
+    Mat2 test7 = transpose(b);
+    REQUIRE(test6.e_00 == Approx(42.0f));
+    REQUIRE(test6.e_10 == Approx(0.0f));
+    REQUIRE(test6.e_01 == Approx(-7.5f));
+    REQUIRE(test6.e_11 == Approx(11.11f));
+    REQUIRE(test7.e_00 == Approx(1.0f));
+    REQUIRE(test7.e_10 == Approx(3.0f));
+    REQUIRE(test7.e_01 == Approx(2.0f));
+    REQUIRE(test7.e_11 == Approx(4.0f));
+
+    Mat2 test8 = make_rotation_mat2(phi);
+    REQUIRE(test8.e_00 == Approx(0.52532f));
+    REQUIRE(test8.e_10 == Approx(-0.8509f));
+    REQUIRE(test8.e_01 == Approx(0.8509f));
+    REQUIRE(test8.e_11 == Approx(0.52532f));
 }
 
 int main(int argc, char *argv[])
