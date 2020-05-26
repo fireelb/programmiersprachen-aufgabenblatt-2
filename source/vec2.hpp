@@ -11,4 +11,5 @@ struct Vec2
 	Vec2& operator/=(float s);
 };
 
+
 #endif
