@@ -35,3 +35,38 @@ Vec2& Vec2::operator/=(float s)
 		std::cout << "Division durch Null nicht möglich!\n";
 	}
 }
+
+Vec2 operator+(Vec2 const& u, Vec2 const& v)
+{
+	Vec2 uk{ u };
+	uk += v;
+	return uk;
+}
+
+Vec2 operator-(Vec2 const& u, Vec2 const& v)
+{
+	Vec2 uk{ u };
+	uk -= v;
+	return uk;
+}
+
+Vec2 operator*(Vec2 const& v, float s)
+{
+	Vec2 vk{ v };
+	vk *= s;
+	return vk;
+}
+
+Vec2 operator/(Vec2 const& v, float s)
+{
+	Vec2 vk{ v };
+	vk /= s;
+	return vk;
+}
+
+Vec2 operator*(float s, Vec2 const& v)
+{
+	Vec2 vk{ v };
+	vk *= s;
+	return vk;
+}
