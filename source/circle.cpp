@@ -1,4 +1,5 @@
 #include "circle.hpp"
+#include <cmath>
 
 Circle::Circle()
 {
@@ -10,4 +11,9 @@ Circle::Circle(float a, Vec2 v)
 {
 	r = a;
 	m = v;
+}
+
+float circle::circumference(float r)
+{
+	return { 2 * M_PI * r };
 }

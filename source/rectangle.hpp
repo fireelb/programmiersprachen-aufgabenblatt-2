@@ -7,6 +7,7 @@ class Rect
 public:
 	Rect();
 	Rect(Vec2 const& u, Vec2 const& v);
+	float circumference(Vec2 const& u, Vec2 const& v);
 
 private:
 	Vec2 min_;
