@@ -13,7 +13,7 @@ Circle::Circle(float a, Vec2 v)
 	m = v;
 }
 
-float circle::circumference(float r)
+float Circle::circumference(float r)
 {
 	return { 2 * M_PI * r };
 }
